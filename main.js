@@ -1,11 +1,17 @@
+// **** Creat random array ******
+let randomArray = new Array(10);
+for (let i= 0; i < randomArray.length; i++){
+    randomArray[i] = Math.floor(Math.random()*100)
+}
+
 //************ Exercise 1 *********************
 function findMax (){
-    let myArray = [1, 3, 5, 9, 5];
+    let myArray = randomArray;
     let max = myArray[0];
 
     for (let i=1; i < myArray.length; i++){
-        if (max > myArray[i]){
-            max = myArray[i]
+        if (max < myArray[i]){
+            max = myArray[i];
         }
     }
     let myStr = myArray.join();
@@ -17,7 +23,7 @@ function findMax (){
 
 //******** Exercise 2 **************************
 function tryRemoveFromArray () {
-    let myArray = [1,1,1,1,2,3,4];
+    let myArray = randomArray;
     let outputArray = [];
     let x = +prompt('Enter a number: ');
 
