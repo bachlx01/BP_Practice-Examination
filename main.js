@@ -61,13 +61,14 @@ function checkFibonacci (num){
     let a3 = 0;
     flag = false;
     do {
+        if (a1 == num){
+            flag = true;
+        }
         a3 = a1 + a2;
         a1 = a2;
         a2 = a3;
-        if (a3 == num){
-            flag = true;
-        }
-    } while (a3<=num);
+
+    } while (a1<=num);
     return flag;
 }
 //************************************************************
