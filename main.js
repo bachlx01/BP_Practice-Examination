@@ -25,7 +25,7 @@ function findMax (){
 function tryRemoveFromArray () {
     let myArray = randomArray;
     let outputArray = [];
-    let x = +prompt('Enter a number: ');
+    let x = document.getElementById('id-exercise2').value;
 
     for (let i = 0; i < myArray.length; i++){
         if (x != myArray[i]){
@@ -36,7 +36,7 @@ function tryRemoveFromArray () {
     let strMyArray = myArray.join();
     let strOutputArray = outputArray.join();
     let result = 'The array was input: ' + strMyArray + '</br>'
-        + 'Number was deleted ' + x
+        + 'Number was deleted: ' + x
         + '</br> The output array: ' + strOutputArray;
 
     document.getElementById('tryRemoveFromArray').innerHTML = result;
@@ -46,11 +46,12 @@ function tryRemoveFromArray () {
 
 //********* Exercise 3 *****************************
 function isFibonacci() {
-    let num = prompt('Enter a number: ');
+    let num = document.getElementById('id-exercise3').value;
 
-    let result = 'Number ' + num
-    + (checkFibonacci(num)? ' is Fibonacci': ' is not Fibonacci');
-
+    let result = num + (checkFibonacci(num)? ' is Fibonacci': ' is not Fibonacci');
+    if (num == ''){
+        document.getElementById('isFibonacci').innerHTML = 'Hãy nhập vào một số';
+    } else
     document.getElementById('isFibonacci').innerHTML = result;
 }
 
@@ -80,14 +81,20 @@ function Circles (x, y, radius, color){
     this.color = color;
 
     this.render = function (){
-        let ctx = document.getElementById('renderCircle').getContext('2d');
+        let canvas = document.getElementById('renderCircle');
+        let ctx = canvas.getContext('2d');
         ctx.beginPath();
         ctx.fillStyle = this.color;
+        ctx.clearRect(0,0,1000,1000);
         ctx.arc(this.x, this.y, this.radius, 0, 2* Math.PI);
         ctx.fill();
+        ctx.closePath()
     }
 }
 function renderCircle (){
-    let circle = new Circles(110, 110, 100, '#000000');
+    let radius = parseInt(document.getElementById('id-exercise4').value);
+    let x = radius + 10;
+    let y = radius + 10;
+    let circle = new Circles(x, y, radius, '#000000');
     circle.render();
 }
